@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RSVP Records - Society Event</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef3f8;
+            color: #222;
+        }
+
+        .navbar {
+            background-color: #1f3c88;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1f3c88;
+            margin-bottom: 30px;
+        }
+
+        .rsvp-card {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #1f3c88;
+        }
+
+        .rsvp-card h2 {
+            color: #1f3c88;
+            margin-bottom: 15px;
+        }
+
+        .rsvp-card p {
+            margin: 8px 0;
+        }
+
+        .empty {
+            background-color: white;
+            padding: 35px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #1f3c88;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #162d68;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="/">Home</a>
+        <a href="/create_event">Create Event</a>
+        <a href="/events">View Events</a>
+        <a href="/rsvps">RSVP Records</a>
+    </nav>
+
+    <div class="container">
+
+        <h1>RSVP Records</h1>
+
+        {% if rsvps %}
+
+            {% for rsvp in rsvps %}
+
+                <div class="rsvp-card">
+
+                    <h2>{{ rsvp["event_name"] }}</h2>
+
+                    <p>
+                        <strong>Student Name:</strong>
+                        {{ rsvp["student_name"] }}
+                    </p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        {{ rsvp["email"] }}
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty">
+
+                <h2>No RSVP Records Found</h2>
+
+                <p>There are currently no registered participants.</p>
+
+                <a class="btn" href="/events">
+                    View Events
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

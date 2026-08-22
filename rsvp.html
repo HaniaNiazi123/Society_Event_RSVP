@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RSVP - Society Event</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef3f8;
+            color: #222;
+        }
+
+        .navbar {
+            background-color: #1f3c88;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .event-info {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .event-info h1 {
+            color: #1f3c88;
+            margin-bottom: 15px;
+        }
+
+        .form-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1f3c88;
+        }
+
+        button {
+            width: 100%;
+            background-color: #1f3c88;
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #162d68;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #1f3c88;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="/">Home</a>
+        <a href="/create_event">Create Event</a>
+        <a href="/events">View Events</a>
+        <a href="/rsvps">RSVP Records</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="event-info">
+
+            <h1>{{ event["name"] }}</h1>
+
+            <p>
+                <strong>Date:</strong>
+                {{ event["date"] }}
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                {{ event["location"] }}
+            </p>
+
+        </div>
+
+        <div class="form-card">
+
+            <h2>Register for this Event</h2>
+
+            <br>
+
+            <form method="POST">
+
+                <label for="name">Your Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <label for="email">Your Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <button type="submit">
+                    Confirm RSVP
+                </button>
+
+            </form>
+
+            <a class="back-link" href="/events">
+                ← Back to Events
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
